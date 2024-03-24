@@ -1,0 +1,20 @@
+version: "3.8"
+
+# https://test1.titannet.io
+
+name: titannet
+
+services:
+  titan-edge:
+    container_name: titan-edge
+    image: nezha123/titan-edge:1.2
+    env_file:
+      - .env
+    restart: unless-stopped
+    command:
+      [
+        "titan-edge",
+        "bind",
+        "--hash=$ID_CODE",
+        "https://api-test1.container1.titannet.io/api/v2/device/binding",
+      ]
